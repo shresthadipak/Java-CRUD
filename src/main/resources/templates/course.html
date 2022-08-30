@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-2">
+	<h1 align="center">Student Management System</h1>
+	<hr>
+	<h2><a th:href="@{/}">Student</a> | <a th:href="@{/course}">Course</a></h2>
+	<hr>
+	<h3>Course List</h3>
+	<a th:href="@{/showCourseForm}" class="btn btn-primary btn-sm mb-3">Add New Course</a>
+	<table border="1" class = "table table-striped table-responsive-md">
+		<thead>
+			<tr>
+				<th>Course Code</th>
+				<th>Course Name</th>
+				<th>Course Type</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+			
+		<tbody>
+			<tr th:each="course: ${listcourse}">
+				<td th:text="${course.course_code}"></td>
+				<td th:text="${course.course_name}"></td>
+				<td th:text="${course.course_type}"></td>
+				<td><a th:href="@{/showUpdateCourseForm/{id}(id=${course.id})}" class="btn btn-primary">Update</a> <a th:href="@{/deleteCourse/{id}(id=${course.id})}" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
