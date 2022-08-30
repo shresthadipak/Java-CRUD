@@ -1,10 +1,13 @@
 package com.arnav.StudentInfo.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +26,9 @@ public class Course {
 	
 	@Column(name = "course_type")
 	private String course_type;
+	
+	@OneToMany(mappedBy="course")
+	private List<Teacher> teacher;
 
 	public long getId() {
 		return id;
