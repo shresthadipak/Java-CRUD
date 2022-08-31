@@ -24,7 +24,7 @@ public class TeacherController {
 	@GetMapping("/teacher")
 	public String viewTeacherMainPage(Model model) {
 		model.addAttribute("listteacher", tservice.getAllTeacher());
-		return "teacher";
+		return "teacher/index";
 	}
 	
 	@GetMapping("/showTeacherForm")
@@ -32,7 +32,7 @@ public class TeacherController {
 		Teacher teacher = new Teacher();
 		model.addAttribute("teacher",teacher);
 		model.addAttribute("course", cservice.getAllCourse());
-		return "new_teacher";
+		return "teacher/add";
 	}
 	
 	@PostMapping("/addNewTeacher")
@@ -46,7 +46,7 @@ public class TeacherController {
 		Teacher teacher = tservice.getTeacherById(id);
 		model.addAttribute("teacher", teacher);
 		model.addAttribute("course", cservice.getAllCourse());
-		return "update_teacher";
+		return "teacher/edit";
 	}
 	
 	@GetMapping("/deleteTeacher/{id}")

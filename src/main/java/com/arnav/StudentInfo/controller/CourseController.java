@@ -20,14 +20,14 @@ public class CourseController {
 	@GetMapping("/course")
 	public String viewCoursePage(Model model) {
 		model.addAttribute("listcourse", cservice.getAllCourse());
-		return "course";
+		return "course/index";
 	}
 	
 	@GetMapping("/showCourseForm")
 	public String showCourseForm(Model model) {
 		Course course = new Course();
 		model.addAttribute("course", course);
-		return "new_course";
+		return "course/add";
 	}
 	
 	@PostMapping("/addNewCourse")
@@ -40,7 +40,7 @@ public class CourseController {
 	public String showUpdateCourseForm(@PathVariable (value="id") long id, Model model) {
 		Course course = cservice.getCourseById(id);
 		model.addAttribute("course", course);
-		return "update_course";
+		return "course/edit";
 	}
 	
 	@GetMapping("/deleteCourse/{id}")

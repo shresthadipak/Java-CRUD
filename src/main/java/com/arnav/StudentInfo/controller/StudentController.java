@@ -21,7 +21,7 @@ public class StudentController {
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
 		model.addAttribute("liststudent", service.getAllStudent());
-		return "index";
+		return "student/index";
 	}
 	
 
@@ -30,7 +30,7 @@ public class StudentController {
 		//create model attribute to bind form data
 		Student student = new Student();
 		model.addAttribute("student", student);
-		return "new_student";
+		return "student/add";
 	}
 	
 	@PostMapping("/addNewStudent")
@@ -45,7 +45,7 @@ public class StudentController {
 		//get student from the service
 		Student student = service.getStudentById(id);
 		model.addAttribute("student", student);
-		return "update_student";
+		return "student/edit";
 	}
 	
 	@GetMapping("/deleteStudent/{id}")
