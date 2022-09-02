@@ -31,7 +31,7 @@ public class TeacherController {
 	public String showTeacherForm(Model model) {
 		Teacher teacher = new Teacher();
 		model.addAttribute("teacher",teacher);
-		model.addAttribute("course", cservice.getAllCourse());
+		model.addAttribute("listCourse", cservice.getAllCourse());
 		return "teacher/add";
 	}
 	
@@ -45,7 +45,7 @@ public class TeacherController {
 	public String showUpdateTeacherForm(@PathVariable(value="id") long id, Model model) {
 		Teacher teacher = tservice.getTeacherById(id);
 		model.addAttribute("teacher", teacher);
-		model.addAttribute("course", cservice.getAllCourse());
+		model.addAttribute("listCourse", cservice.getAllCourse());
 		return "teacher/edit";
 	}
 	

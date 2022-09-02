@@ -20,12 +20,12 @@
 		<input type="text" th:field="*{mobile_number}" placeholder="Mobile number here" class="form-control mb-4 col-4">
 		<input type="text" th:field="*{email_address}" placeholder="Email address here" class="form-control mb-4 col-4">
 		<input type="text" th:field="*{address}" placeholder="Address here" class="form-control mb-4 col-4">
-		<select class="form-control mb-4 col-4" th:field="*{course}">
-			<option th:each = "option: ${course}"
-					th:value = "${option.id}"
-					th:text="${option.course_name}" 
-			></option>
-		</select>
+		<h5>Courses</h5>
+		<div class="form-check" th:each="course: ${listCourse}">
+			<input type="checkbox" th:field="*{courses}"
+			th:value="${course.id}" class="form-check-input">
+			<label class="form-check-label" th:text="${course.course_name}"></label>
+		</div>
 	
 		<button type="submit" class="btn btn-info col-2">Add Teacher</button>
 	</form>

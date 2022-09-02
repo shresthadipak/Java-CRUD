@@ -1,12 +1,17 @@
 package com.arnav.StudentInfo.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="teacher")
@@ -28,8 +33,13 @@ public class Teacher {
 	@Column(name="address")
 	private String address;
 	
-	@ManyToOne
-	private Course course;
+	@ManyToMany
+	@JoinTable(
+			name="teacher_course",
+			joinColumns = @JoinColumn(name="teacher_id"),
+			inverseJoinColumns = @JoinColumn(name="course_id")
+			)
+	private Set<Course> courses = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -71,11 +81,12 @@ public class Teacher {
 		this.address = address;
 	}
 
-	public Course getCourse() {
-		return course;
+	public Set<Course> getCourses() {
+		return courses;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
+	
 }

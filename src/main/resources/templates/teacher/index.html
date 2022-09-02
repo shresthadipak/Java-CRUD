@@ -35,7 +35,7 @@
 					<td th:text="${teacher.mobile_number}"></td>
 					<td th:text="${teacher.email_address}"></td>
 					<td th:text="${teacher.address}"></td>
-					<td th:text="${teacher.course.course_name}"></td>
+					<td th:text="${teacher.courses}"></td>
 					<td><a th:href="@{/showUpdateTeacherForm/{id}(id=${teacher.id})}" class="btn btn-primary">Update</a> <a th:href="@{/deleteTeacher/{id}(id=${teacher.id})}" class="btn btn-danger">Delete</a></td>
 				</tr>
 			</tbody>
