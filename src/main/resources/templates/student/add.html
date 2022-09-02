@@ -18,9 +18,16 @@
 	
 	<form action="#" th:action="@{/addNewStudent}" th:object="${student}" method="POST">
 		<input type="text" th:field="*{student_name}" placeholder="Student name here" class="form-control mb-4 col-4">
-		<input type="text" th:field="*{course}" placeholder="Course name here" class="form-control mb-4 col-4">
 		<input type="number" th:field="*{fee}" placeholder="Fee name here" class="form-control mb-4 col-4">
-		
+		<h5>Courses</h5>
+		<div class="form-check" th:each="course: ${listCourse}">
+				<input type="checkbox"
+				th:field="*{courses}"
+				th:value="${course.id}"
+				 class="form-check-input">
+				<label class="form-check-label" 
+				th:text="${course.course_name}"></label>
+		</div>
 		<button type="submit" class="btn btn-info col-2">Add Student</button>
 	</form>
 	<hr>

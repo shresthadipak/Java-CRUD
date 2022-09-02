@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.arnav.StudentInfo.domain.Student;
+import com.arnav.StudentInfo.service.CourseService;
 import com.arnav.StudentInfo.service.StudentService;
 
 @Controller
@@ -16,6 +17,9 @@ public class StudentController {
 	
 	@Autowired
 	public StudentService service;
+	
+	@Autowired
+	public CourseService cservice;
 	
 	
 	@GetMapping("/")
@@ -30,6 +34,7 @@ public class StudentController {
 		//create model attribute to bind form data
 		Student student = new Student();
 		model.addAttribute("student", student);
+		model.addAttribute("listCourse", cservice.getAllCourse());
 		return "student/add";
 	}
 	
@@ -45,6 +50,7 @@ public class StudentController {
 		//get student from the service
 		Student student = service.getStudentById(id);
 		model.addAttribute("student", student);
+		model.addAttribute("listCourse", cservice.getAllCourse());
 		return "student/edit";
 	}
 	
@@ -54,4 +60,13 @@ public class StudentController {
 		this.service.deleteStudentById(id);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/assignCourses/{id}")
+	public String assignCourses(@PathVariable (value="id") long id, Model model) {
+		Student student = service.getStudentById(id);
+		model.addAttribute("student", student);
+		model.addAttribute("listCourse", cservice.getAllCourse());
+		return "student/courses/assign";
+	}
+		
 }

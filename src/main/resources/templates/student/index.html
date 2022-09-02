@@ -22,8 +22,8 @@
 		<thead>
 			<tr>
 				<th>Student Name</th>
-				<th>Course</th>
 				<th>Fee</th>
+				<th>Assign Courses</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -31,9 +31,9 @@
 		<tbody>
 			<tr th:each="student: ${liststudent}">
 				<td th:text="${student.student_name}"></td>
-				<td th:text="${student.course}"></td>
 				<td th:text="${student.fee}"></td>
-				<td><a th:href="@{/showUpdateStudentForm/{id}(id=${student.id})}" class="btn btn-primary">Update</a> <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a></td>
+				<td th:text="${student.courses}"></td>
+				<td> <a th:href="@{/showUpdateStudentForm/{id}(id=${student.id})}" class="btn btn-primary">Update</a> <a th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>

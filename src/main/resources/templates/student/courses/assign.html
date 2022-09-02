@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<h1 align="center">Student Management System</h1>
+		<hr>
+		<h2><a th:href="@{/}">Student</a> | <a th:href="@{/course}">Course</a> | <a th:href="@{/teacher}">Teacher</a></h2>
+		<hr>
+		<h4 th:text="'Courses assign to '+${student.student_name}"></h4>
+		<hr>
+		<h5>Courses</h5>
+		<form action="#" method="POST" th:action="@{/addNewStudent}" th:object="${student}">
+			<input type="hidden" th:value="*{id}">
+			<input type="text" th:field="*{student_name}" placeholder="Student name here" class="form-control mb-4 col-4">
+		   <input type="number" th:field="*{fee}" placeholder="Fee name here" class="form-control mb-4 col-4">
+			<div class="form-check" th:each="course: ${listCourse}">
+				<input type="checkbox"
+				th:field="*{courses}"
+				th:value="${course.id}"
+				 class="form-check-input">
+				<label class="form-check-label" 
+				th:text="${course.course_name}"></label>
+			</div>
+			
+			<button type="submit" class="btn btn-info col-2">Assign</button>
+		</form>
+		
+	</div>
+	
+</body>
+</html>
