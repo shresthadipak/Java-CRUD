@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Student Management System</title>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+	<div th:replace="baseLayout :: header"></div>
 </head>
 <body>
 
 <div class="container my-2">
-	<h1>Student Management System</h1>
+	<div th:replace="baseLayout :: title"></div>
 	<hr>
 	<h2>Add New Student</h2>
-	
 	<form action="#" th:action="@{/addNewStudent}" th:object="${student}" method="POST">
 		<input type="text" th:field="*{student_name}" placeholder="Student name here" class="form-control mb-4 col-4">
 		<input type="number" th:field="*{fee}" placeholder="Fee name here" class="form-control mb-4 col-4">
@@ -31,7 +24,9 @@
 		<button type="submit" class="btn btn-info col-2">Add Student</button>
 	</form>
 	<hr>
-	<a th:href=@{/}>Back to Student List</a>
+	<a th:href=@{/student}>Back to Student List</a>
+	
+	<div th:insert="baseLayout :: footer"></div>
 </div>	
 </body>
 </html>

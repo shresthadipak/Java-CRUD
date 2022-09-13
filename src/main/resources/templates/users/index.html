@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<div th:replace="baseLayout :: header"></div>
+</head>
+<body>
+	<div class="container my-2">
+		<div th:replace="baseLayout :: title"></div>
+		<hr>
+		<div th:replace="baseLayout :: navbar"></div>
+		<hr>
+		<h3>Users List</h3>
+		<a class="btn btn-primary btn-sm mb-3">Add New User</a>
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last name</th>
+					<th>Email Address</th>
+					<th>Password</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr th:each="user: ${listUsers}">
+					<td th:text="${user.first_name}"></td>
+					<td th:text="${user.last_name}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.password}"></td>
+					<td><a class="btn btn-primary">Update</a> <a class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div th:insert="baseLayout :: footer"></div>
+	</div>
+</body>
+</html>

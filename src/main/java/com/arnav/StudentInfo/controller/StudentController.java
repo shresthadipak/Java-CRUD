@@ -22,7 +22,7 @@ public class StudentController {
 	public CourseService cservice;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/student")
 	public String viewHomePage(Model model) {
 		model.addAttribute("liststudent", service.getAllStudent());
 		return "student/index";
@@ -42,7 +42,7 @@ public class StudentController {
 	public String addNewStudent(@ModelAttribute("student") Student student) {
 		// save student to database
 		service.saveStudent(student);
-		return "redirect:/";
+		return "redirect:/student";
 	}
 	
 	@GetMapping("/showUpdateStudentForm/{id}")
@@ -58,7 +58,7 @@ public class StudentController {
 	public String deleteStudent(@PathVariable (value = "id") long id, Model model) {
 		//get delete student method from service
 		this.service.deleteStudentById(id);
-		return "redirect:/";
+		return "redirect:/student";
 	}
 	
 	@GetMapping("/assignCourses/{id}")

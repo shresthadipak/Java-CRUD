@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Student Management System</title>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+	<div th:replace="baseLayout :: header"></div>
 </head>
 <body>
 <div class="container my-2">
-	<h1>Student Management System</h1>
+	<div th:replace="baseLayout :: title"></div>
 	<hr>
 	<h2>Add New Teacher</h2>
 	
@@ -31,6 +25,8 @@
 	</form>
 	<hr>
 	<a th:href=@{/teacher}>Back to Teacher List</a>
+	
+	<div th:insert="baseLayout :: footer"></div>
 </div>	
 </body>
 </html>

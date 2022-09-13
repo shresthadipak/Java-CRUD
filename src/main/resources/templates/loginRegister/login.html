@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<div th:replace="baseLayout :: header"></div>
+<body>
+<div class="container my-2" align="center">
+	<div th:replace="baseLayout :: title"></div>
+	<hr>
+	<h2>Login</h2>
+	<hr>
+	<form action="#" >
+		<input type="text" placeholder="Username here" class="form-control mb-4 col-4">
+		<input type="password" placeholder="Password here" class="form-control mb-4 col-4">
+		<button type="submit" class="btn btn-info col-2">Login</button>
+	</form>
+	<hr>
+	<a>Forgot Password?</a> | <a th:href="@{/register}">New User? Register here</a>
+	
+	<div th:insert="baseLayout :: footer"></div>
+</div>
+</body>
+</html>
