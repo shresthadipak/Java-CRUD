@@ -17,7 +17,7 @@
 					<th>First Name</th>
 					<th>Last name</th>
 					<th>Email Address</th>
-					<th>Password</th>
+					<th>Assigned Roles</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -27,7 +27,7 @@
 					<td th:text="${user.first_name}"></td>
 					<td th:text="${user.last_name}"></td>
 					<td th:text="${user.email}"></td>
-					<td th:text="${user.password}"></td>
+					<td th:text="${user.roles}"></td>
 					<td><a class="btn btn-primary">Update</a> <a class="btn btn-danger">Delete</a></td>
 				</tr>
 			</tbody>

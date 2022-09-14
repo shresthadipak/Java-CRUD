@@ -23,5 +23,6 @@ public class UsersServiceImpl implements UsersService{
 	public void saveUser(Users user) {
 		this.usersrepo.save(user);
 	}
+	
 
 }

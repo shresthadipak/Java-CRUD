@@ -1,9 +1,17 @@
 package com.arnav.StudentInfo.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -18,6 +26,21 @@ public class Users {
 	private String last_name;
 	private String email;
 	private String password;
+	
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(
+				name="user_role",
+				joinColumns = @JoinColumn(name="user_id"),
+				inverseJoinColumns = @JoinColumn(name="role_id")
+			)
+	private Set<Roles> roles = new HashSet<>();
+	
+	public Set<Roles> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Roles> roles) {
+		this.roles = roles;
+	}
 	public long getId() {
 		return id;
 	}

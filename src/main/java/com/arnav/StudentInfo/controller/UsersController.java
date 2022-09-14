@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arnav.StudentInfo.domain.Users;
+import com.arnav.StudentInfo.service.RolesService;
 import com.arnav.StudentInfo.service.UsersService;
 
 @Controller
 public class UsersController {
 	
 	@Autowired
-	private UsersService userservice;
+	private UsersService userService;
+	
+	@Autowired
+	private RolesService rolesService;
 	
 	@GetMapping("/")
 	public String loginPage(Model model) {
@@ -25,18 +29,19 @@ public class UsersController {
 	public String register(Model model) {
 		Users users = new Users();
 		model.addAttribute("users", users);
+		model.addAttribute("listRoles", rolesService.getAllRoles());
 		return "loginRegister/register";
 	}
 	
 	@GetMapping("/users")
 	public String users(Model model) {
-		model.addAttribute("listUsers", userservice.getAllUsers());
+		model.addAttribute("listUsers", userService.getAllUsers());
 		return "users/index";
 	}
 	
 	@PostMapping("/addUser")
 	public String addUser(@ModelAttribute("user") Users user) {
-		userservice.saveUser(user);
+		userService.saveUser(user);
 		return "redirect:/";
 	}
 	

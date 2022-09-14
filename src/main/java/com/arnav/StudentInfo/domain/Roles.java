@@ -33,4 +33,10 @@ public class Roles {
 	public void setRole_name(String role_name) {
 		this.role_name = role_name;
 	}
+
+	@Override
+	public String toString() {
+		return role_name;
+	}
+	
 }
