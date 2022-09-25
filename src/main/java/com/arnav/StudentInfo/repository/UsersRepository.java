@@ -7,5 +7,5 @@ import com.arnav.StudentInfo.domain.Users;
 
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long>{
-
+	Users findByEmail(String email);
 }

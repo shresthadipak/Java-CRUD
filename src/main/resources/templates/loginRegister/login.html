@@ -8,9 +8,18 @@
 	<hr>
 	<h2>Login</h2>
 	<hr>
-	<form action="#" >
-		<input type="text" placeholder="Username here" class="form-control mb-4 col-4">
-		<input type="password" placeholder="Password here" class="form-control mb-4 col-4">
+	<div th:if="${param.error}">
+		<div class="alert alert-danger">Invalid username or password.</div>
+	<hr>	
+	</div>
+	
+	<div th:if="${param.logout}">
+		<div class="alert alert-info">You're successfully logout.</div>
+	<hr>	
+	</div>
+	<form action="#" th:action="@{/login}" method="POST">
+		<input type="text" placeholder="Username here" name="username" class="form-control mb-4 col-4">
+		<input type="password" placeholder="Password here" name="password" class="form-control mb-4 col-4">
 		<button type="submit" class="btn btn-info col-2">Login</button>
 	</form>
 	<hr>

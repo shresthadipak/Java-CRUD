@@ -10,20 +10,26 @@
 	<hr>
 	<h2>Register</h2>
 	<hr>
-	<form action="#" th:action="@{/addUser}" th:object="${users}" method="POST">
+	
+	<div th:if="${param.success}">
+		<div class="alert alert-info">You're successfully registered</div>
+	<hr>	
+	</div>
+	
+	<form action="#" th:action="@{/registration }" th:object="${user}" method="POST">
 		<input type="text" th:field="*{first_name}" placeholder="Firstname here" class="form-control mb-4 col-4">
 		<input type="text" th:field="*{last_name}" placeholder="Lastname here" class="form-control mb-4 col-4">
 		<input type="password" th:field="*{password}" placeholder="Password here" class="form-control mb-4 col-4">
 		<input type="text" th:field="*{email}" placeholder="Email here" class="form-control mb-4 col-4">
-		<h5>Roles</h5>
-		<div class="form-check" th:each="role: ${listRoles}">
-				<input type="checkbox"
-				th:field="*{roles}"
-				th:value="${role.id}"
-				 class="form-check-input">
-				<label class="form-check-label" 
-				th:text="${role.role_name}"></label>
-		</div>
+<!-- 		<h5>Roles</h5> -->
+<!-- 		<div class="form-check" th:each="role: ${listRoles}"> -->
+<!-- 				<input type="checkbox" -->
+<!-- 				th:field="*{roles}" -->
+<!-- 				th:value="${role.id}" -->
+<!-- 				 class="form-check-input"> -->
+<!-- 				<label class="form-check-label"  -->
+<!-- 				th:text="${role.role_name}"></label> -->
+<!-- 		</div> -->
 		<button type="submit" class="btn btn-info col-2">Register</button>
 	</form>
 	<hr>

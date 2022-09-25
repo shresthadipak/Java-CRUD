@@ -2,9 +2,14 @@ package com.arnav.StudentInfo.service;
 
 import java.util.List;
 
-import com.arnav.StudentInfo.domain.Users;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UsersService {
+import com.arnav.StudentInfo.domain.Users;
+import com.arnav.StudentInfo.web.dto.UserRegistrationDto;
+
+public interface UsersService extends UserDetailsService{
 	List<Users> getAllUsers();
-	void saveUser(Users user);
+	//void saveUser(Users user);
+	
+	Users save(UserRegistrationDto registrationDto);
 }

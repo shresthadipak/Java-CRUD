@@ -35,6 +35,15 @@ public class Users {
 			)
 	private Set<Roles> roles = new HashSet<>();
 	
+	public Users(String first_name, String last_name, String email, String password, Set<Roles> roles) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
+	}
+	
 	public Set<Roles> getRoles() {
 		return roles;
 	}
