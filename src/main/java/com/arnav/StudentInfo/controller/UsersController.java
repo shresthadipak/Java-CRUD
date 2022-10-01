@@ -45,10 +45,6 @@ public class UsersController {
 //	@Autowired
 //	private RolesService rolesService;
 	
-	@GetMapping("/login")
-	public String login() {
-		return "loginRegister/login";
-	}
 	
 //	@GetMapping("/register")
 //	public String register(Model model) {
